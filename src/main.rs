@@ -9,8 +9,8 @@ struct AppState {
 #[get("/")]
 async fn hello(data: web::Data<AppState>) -> impl Responder {
     let app_name = &data.app_name; // <- get app_name
-    let _name = format!("Hello {app_name}!") ;//
-    HttpResponse::Ok().body("Hello Sachin, Welcome to {_name}!")
+    let app_name = format!("Hello Sam, Welcome to {app_name}!");
+    HttpResponse::Ok().body(app_name)
 }
 
 #[post("/echo")]
@@ -33,7 +33,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .app_data(web::Data::new(AppState {
-                app_name: String::from("Actix Web"),
+                app_name: String::from("Actix Web Server"),
             }))
             .service( web::scope("/app").route("/index.html", web::get().to(index)),)
             .service(hello)
