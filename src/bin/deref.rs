@@ -9,8 +9,8 @@ fn main(){
    let b: &mut Team = x.entry(2).or_insert(Team{yes:10,no:Nos{not:88}});
    let c= y.entry(2).or_insert(22);
 
-   (*b).yes += 100;
-   (*b).no.not += 12;
+    (*b).yes += 100;
+//    (*b).no.not += 12;
    
    *c +=99;
    println!("The data are {:?}", x);
